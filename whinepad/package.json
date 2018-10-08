@@ -1,0 +1,25 @@
+{
+  "name": "whinepad",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bundle.js",
+  "dependencies": {
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "classnames": "^2.2.6"
+  },
+  "devDependencies": {
+    "eslint": "github:eslint/eslint",
+    "tslint": "github:palantir/tslint",
+    "lint-staged": "github:okonet/lint-staged",
+    "npm-run-all": "github:mysticatea/npm-run-all",
+    "prettier": "github:prettier/prettier"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

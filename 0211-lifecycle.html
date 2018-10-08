@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+</div>
+<script src="react/build/react.js"></script>
+<script src="react/build/react-dom.js"></script>
+<script>
+  let TextAreaCounter = React.createClass({
+    propTypes: {
+      text: React.PropTypes.string,
+    },
+
+    _log: function (methodName, args) {
+      console.log(methodName, args)
+    },
+
+    componentWillUpdate: function (newProps, newState) {
+      this._log("componentWillUpdate", "2回目以降にコンポーネントの描画が行われる前に呼び出されます");
+      this._log("componentDidUpdate", "newProps = " + newProps.text + " newState = " + newState.text);
+    },
+    componentDidUpdate: function (oldProps, oldState) {
+      this._log("componentDidUpdate", "render()メソッドの処理が完了し、DOMへの変更が適用された後に呼び出されます");
+      this._log("componentDidUpdate", "oldProps = " + oldProps.text + " oldState = " + oldState.text);
+    },
+    componentWillMount: function () {
+      this._log("componentWillMount", "ノードがDOMに挿入される直前に呼び出されます");
+    },
+    componentDidMount: function () {
+      this._log("componentDidMount", "ノートが挿入されたチョコ語に呼び出されます");
+    },
+    componentWillUnmount: function () {
+      this._log("componentWillUnmount", "コンポーネントがDOMから削除される直前に呼び出されます");
+    },
+
+    getInitialState: function () {
+      return {
+        text: this.props.text,
+      };
+    },
+
+    _textChange: function (ev) {
+      this.setState({
+        text: ev.target.value,
+      });
+    },
+
+    getDefaultProps: function () {
+      return {
+        text: '',
+      };
+    },
+
+    render: function () {
+      return React.DOM.div(null,
+        React.DOM.textarea({
+          defaultValue: this.state.text,
+          onChange: this._textChange,
+        }),
+        React.DOM.h3(null, this.state.text.length)
+      )
+    }
+  });
+
+  ReactDOM.render(
+    React.createElement(TextAreaCounter),
+    document.getElementById("app")
+  );
+</script>
+</body>
+</html>

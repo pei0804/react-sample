@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+</div>
+<script src="react/build/react.js"></script>
+<script src="react/build/react-dom.js"></script>
+<script>
+    let Component = React.createClass({
+      propTypes: {
+        lastName: React.PropTypes.string.isRequired,
+        firstName: React.PropTypes.string.isRequired,
+        middleName: React.PropTypes.string,
+      },
+
+      getDefaultProps: function() {
+        return {
+          middleName: 'なし',
+        };
+      },
+
+      render: function () {
+        return React.DOM.span(null, "私は" + this.props.firstName + this.props.lastName + "です ミドルネームは" + this.props.middleName);
+      }
+    });
+
+    ReactDOM.render(
+      React.createElement(Component, {
+        firstName: "ふぁーすと",
+        lastName: "らすと",
+      }),
+      document.getElementById("app")
+    );
+</script>
+</body>
+</html>
